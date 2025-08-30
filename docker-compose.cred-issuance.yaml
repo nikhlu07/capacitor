@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  cred-issuance:
+    container_name: travlr-cred-issuance
+    build:
+      context: ./travlr-ionic-app/credential-server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - OOBI_ENDPOINT=http://cred-issuance:3001
+      - KERIA_ENDPOINT=http://keria:3901
+      - KERIA_BOOT_ENDPOINT=http://keria:3903
+    ports:
+      - 3001:3001
+    volumes:
+      - issuer-server-data:/app/data
+
+  cred-issuance-ui:
+    container_name: travlr-cred-issuance-ui
+    build:
+      context: ./travlr-ionic-app/credential-server-ui
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    environment:
+      - VITE_SERVER_URL=${VITE_SERVER_URL:-http://localhost:3001}
+    ports:
+      - 3002:80
+
+volumes:
+  issuer-server-data:

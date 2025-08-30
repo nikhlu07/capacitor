@@ -1,0 +1,104 @@
+version: "3.9"
+services:
+  # 6 Separate Witness Containers (like Veridian)
+  witness-0:
+    container_name: travlr-witness-0
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=UTF-8
+    entrypoint:
+      - kli
+    command:
+      - witness
+      - demo
+    volumes:
+      - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5642:5642
+
+  witness-1:
+    container_name: travlr-witness-1
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=UTF-8
+    entrypoint:
+      - kli
+    command:
+      - witness
+      - demo
+    volumes:
+      - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5643:5643
+
+  witness-2:
+    container_name: travlr-witness-2
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=UTF-8
+    entrypoint:
+      - kli
+    command:
+      - witness
+      - demo
+    volumes:
+      - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5644:5644
+
+  witness-3:
+    container_name: travlr-witness-3
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=UTF-8
+    entrypoint:
+      - kli
+    command:
+      - witness
+      - demo
+    volumes:
+      - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5645:5645
+
+  witness-4:
+    container_name: travlr-witness-4
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=UTF-8
+    entrypoint:
+      - kli
+    command:
+      - witness
+      - demo
+    volumes:
+      - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5646:5646
+
+  witness-5:
+    container_name: travlr-witness-5
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=UTF-8
+    entrypoint:
+      - kli
+    command:
+      - witness
+      - demo
+    volumes:
+      - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5647:5647
