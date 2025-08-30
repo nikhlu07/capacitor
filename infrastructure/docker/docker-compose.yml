@@ -1,0 +1,93 @@
+version: '3.8'
+
+networks:
+  travlr-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  keria-data:
+  witness1-data:
+  witness2-data:
+  witness3-data:
+
+services:
+  # PostgreSQL - Business logic only (NOT KERI data)
+  postgres:
+    image: postgres:15-alpine
+    container_name: travlr-postgres
+    environment:
+      POSTGRES_USER: travlr
+      POSTGRES_PASSWORD: travlr_secure_pass
+      POSTGRES_DB: travlr_business
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - travlr-network
+    restart: unless-stopped
+
+  # KERI Witnesses - Using Veridian's proven setup
+  witnesses:
+    container_name: travlr-witnesses
+    restart: unless-stopped
+    image: weboftrust/keri:1.1.26
+    environment:
+        - PYTHONUNBUFFERED=1
+        - PYTHONIOENCODING=UTF-8
+    entrypoint:
+        - kli
+    command:
+        - witness
+        - demo
+    volumes:
+        - ./keria-config/witnesses:/keripy/scripts/keri/cf/main
+    ports:
+      - 5642:5642
+      - 5643:5643
+      - 5644:5644
+      - 5645:5645
+      - 5646:5646
+      - 5647:5647
+    networks:
+      - travlr-network
+
+  # Veridian KERIA - Production-ready KERI agent
+  keria:
+    container_name: travlr-keria
+    restart: unless-stopped
+    image: cardanofoundation/cf-idw-keria:1.1.0-PR1223-25dbe26-GHRUN15555427316
+    environment:
+      - KERI_AGENT_CORS=true
+      - ALLOW_INTRODUCTIONS=true
+      - REMOTE_SIGNING=true
+    volumes:
+      - keria-data:/usr/local/var/keri
+      - ./keria-config/config.json:/keria/scripts/keri/cf/backer-oobis.json
+    entrypoint: keria start --config-file backer-oobis --config-dir ./scripts --loglevel INFO
+    ports:
+      - 3901:3901  # Admin API
+      - 3902:3902  # Agent API  
+      - 3903:3903  # Boot API
+    networks:
+      - travlr-network
+    depends_on:
+      - witnesses
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3901/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Adminer - Database management
+  adminer:
+    image: adminer:latest
+    container_name: travlr-adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - travlr-network
+    depends_on:
+      - postgres

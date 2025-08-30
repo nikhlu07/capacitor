@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(node:*)",
+      "Bash(docker logs:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker-compose logs:*)",
+      "Bash(docker-compose:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(timeout:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker:*)",
+      "Bash(chmod:*)",
+      "Bash(bash:*)",
+      "Bash(taskkill:*)",
+      "Bash(npm start)",
+      "Bash(npm start:*)",
+      "Bash(lsof:*)",
+      "Read(C:\\Users\\nikhil\\Downloads\\t\\scania-keri\\veridian-wallet/**)",
+      "Read(C:\\Users\\nikhil\\Downloads\\t\\scania-keri\\veridian-wallet/**)",
+      "Read(C:\\Users\\nikhil\\Downloads\\t\\scania-keri\\veridian-wallet/**)",
+      "Bash(git restore:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

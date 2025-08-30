@@ -1,0 +1,199 @@
+{
+  "$id": "ELTravelPrefs2024v1-TravlrID-ACDC-Schema-SAID",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Travel Preferences ACDC Credential Schema",
+  "description": "ACDC schema for employee travel preferences in Travlr-ID system",
+  "type": "object",
+  "credentialType": "TravelPreferencesCredential",
+  "version": "1.0",
+  "properties": {
+    "v": {
+      "description": "Version",
+      "type": "string"
+    },
+    "d": {
+      "description": "Digest (SAID)",
+      "type": "string"
+    },
+    "i": {
+      "description": "Issuer AID",
+      "type": "string"
+    },
+    "ri": {
+      "description": "Registry identifier",
+      "type": "string"
+    },
+    "s": {
+      "description": "Schema SAID",
+      "type": "string"
+    },
+    "a": {
+      "description": "Attribute section",
+      "type": "object",
+      "properties": {
+        "i": {
+          "description": "Recipient AID",
+          "type": "string"
+        },
+        "dt": {
+          "description": "Issuance date time",
+          "type": "string",
+          "format": "date-time"
+        },
+        "employee_id": {
+          "description": "Employee identifier",
+          "type": "string"
+        },
+        "full_name": {
+          "description": "Full name of the traveler",
+          "type": "string"
+        },
+        "seat_preference": {
+          "description": "Preferred seat type",
+          "type": "string",
+          "enum": ["aisle", "window", "middle", "no_preference"]
+        },
+        "meal_preference": {
+          "description": "Preferred meal type",
+          "type": "string",
+          "enum": ["vegetarian", "vegan", "kosher", "halal", "gluten_free", "standard", "no_meal"]
+        },
+        "preferred_airlines": {
+          "description": "List of preferred airline codes",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "frequent_flyer_numbers": {
+          "description": "Mapping of airline to frequent flyer number",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "accommodation_type": {
+          "description": "Preferred accommodation type",
+          "type": "string",
+          "enum": ["hotel", "resort", "apartment", "hostel", "bed_and_breakfast", "no_preference"]
+        },
+        "preferred_hotel_chains": {
+          "description": "List of preferred hotel chains",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "loyalty_program_numbers": {
+          "description": "Mapping of hotel chain to loyalty program number",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "room_preferences": {
+          "description": "Room preference specifications",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preferred_transportation": {
+          "description": "Preferred transportation modes",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["flight", "train", "bus", "car_rental", "taxi", "public_transport"]
+          }
+        },
+        "car_rental_preferences": {
+          "description": "Car rental company preferences",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "accessibility_requirements": {
+          "description": "Accessibility requirements",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "medical_requirements": {
+          "description": "Medical requirements",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "special_assistance": {
+          "description": "Special assistance requirements",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "budget_category": {
+          "description": "Budget category for travel",
+          "type": "string"
+        },
+        "policy_exceptions": {
+          "description": "Policy exceptions",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "emergency_contact_name": {
+          "description": "Emergency contact name",
+          "type": "string"
+        },
+        "emergency_contact_phone": {
+          "description": "Emergency contact phone",
+          "type": "string"
+        },
+        "preferred_contact_method": {
+          "description": "Preferred contact method",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "Creation timestamp",
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "description": "Last update timestamp",
+          "type": "string",
+          "format": "date-time"
+        },
+        "version": {
+          "description": "Credential version",
+          "type": "string"
+        },
+        "credential_type": {
+          "description": "Type of credential",
+          "type": "string",
+          "const": "travel_preferences"
+        }
+      },
+      "required": [
+        "i",
+        "dt",
+        "employee_id",
+        "full_name",
+        "credential_type"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "v",
+    "d",
+    "i",
+    "ri",
+    "s",
+    "a"
+  ],
+  "additionalProperties": false
+}

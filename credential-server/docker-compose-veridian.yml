@@ -1,0 +1,40 @@
+services:
+  # Veridian's KERIA setup
+  keria-veridian:
+    image: cardanofoundation/cf-idw-keria:main
+    ports:
+      - "3901:3901"
+      - "3902:3902"
+      - "3903:3903"
+    environment:
+      - KERI_AGENT_CORS=true
+      - KERIA_PASSCODE=DLDRW3f108LaQB2qscJOd
+      - ALLOW_INTRODUCTIONS=true
+      - REMOTE_SIGNING=true
+    volumes:
+      - keria-veridian-data:/usr/local/var/keri
+    entrypoint: keria start --config-dir ./scripts --loglevel INFO
+    restart: unless-stopped
+
+  # Our credential server using Veridian's KERIA
+  travlr-credential-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - KERIA_ENDPOINT=http://keria-veridian:3902
+      - KERIA_BOOT_ENDPOINT=http://keria-veridian:3903
+      - OOBI_ENDPOINT=http://localhost:3001
+      - KERIA_PASSCODE=DLDRW3f108LaQB2qscJOd
+    volumes:
+      - credential-server-data:/app/data
+    depends_on:
+      - keria-veridian
+    restart: unless-stopped
+
+volumes:
+  keria-veridian-data:
+  credential-server-data:

@@ -1,0 +1,22 @@
+# Travlr-ID Project Gitignore
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+.env
+.env.local
+.vscode/
+.idea/
+*.log
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite
+*.lmdb
+keripy/
+nul
+NUL
+tmp/
+temp/

@@ -1,0 +1,21 @@
+{
+  "name": "travlr-keria",
+  "passcode": "0123456789abcdefghij1",
+  "durls": [
+    {
+      "url": "http://localhost:8000/api/v1/oobi",
+      "description": "Travlr-ID Backend Schema OOBI Endpoint"
+    }
+  ],
+  "witnesses": [
+    "http://localhost:5632/oobi",
+    "http://localhost:5633/oobi",
+    "http://localhost:5634/oobi"
+  ],
+  "schema_resolution": {
+    "enabled": true,
+    "endpoints": [
+      "http://localhost:8000/api/v1/schemas"
+    ]
+  }
+}

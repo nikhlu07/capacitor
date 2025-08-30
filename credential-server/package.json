@@ -1,0 +1,31 @@
+{
+    "name": "travlr-credential-server",
+    "version": "0.0.1",
+    "description": "Travlr-ID Credential Issuance Server",
+    "main": "server.ts",
+    "scripts": {
+        "test": "test",
+        "start": "node build/server.js",
+        "dev": "npx nodemon",
+        "build": "rimraf ./build && tsc && copyfiles -u 1 src/schemas/* build"
+    },
+    "author": "Travlr-ID",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.5.0",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "express": "^5.0.0-beta.3",
+        "signify-ts": "^0.3.0-rc1"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^4.17.21",
+        "@types/node": "^20.10.0",
+        "copyfiles": "^2.4.1",
+        "nodemon": "^3.0.1",
+        "rimraf": "^5.0.1",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.3.0"
+    }
+}

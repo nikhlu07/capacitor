@@ -1,0 +1,48 @@
+{
+  "d": "EN7JR2OF5JS_OBalN09UPeQPBZ_tP669iuMjuDxY4ulz",
+  "$id": "EN7JR2OF5JS_OBalN09UPeQPBZ_tP669iuMjuDxY4ulz",
+  "$schema": "https://json-schema.org/draft/07/schema#",
+  "type": "object",
+  "title": "Travlr Travel Preferences",
+  "description": "Employee travel preferences and requirements",
+  "properties": {
+    "d": {
+      "type": "string"
+    },
+    "i": {
+      "type": "string"
+    },
+    "dt": {
+      "type": "string"
+    },
+    "employeeId": {
+      "type": "string"
+    },
+    "travelPreferences": {
+      "type": "object",
+      "properties": {
+        "flight": {
+          "type": "object",
+          "properties": {
+            "seatPreference": {
+              "type": "string"
+            },
+            "classPreference": {
+              "type": "string"
+            },
+            "mealPreference": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "d",
+    "i",
+    "dt",
+    "employeeId",
+    "travelPreferences"
+  ]
+}

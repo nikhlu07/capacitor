@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Travlr Mobile",
+    "slug": "travlr-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": ["web"],
+    "web": {
+      "bundler": "metro"
+    },
+    "sdkVersion": "53.0.0"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$id": "Etk6EhuG09iXynnvGIxUZxYwugDCNC9G80ouiJ1apMlU",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Travel Preferences Credential",
+  "description": "Employee travel preferences and requirements",
+  "properties": {
+    "i": {
+      "type": "string",
+      "description": "Identity AID"
+    },
+    "employeeId": {
+      "type": "string",
+      "description": "Employee identifier"
+    },
+    "seatPreference": {
+      "type": "string",
+      "enum": [
+        "window",
+        "aisle",
+        "middle",
+        "any"
+      ],
+      "description": "Seat preference"
+    },
+    "mealPreference": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "regular",
+        "vegetarian",
+        "vegan",
+        "kosher",
+        "halal",
+        "gluten-free",
+        "none"
+      ],
+      "description": "Meal preference"
+    },
+    "airlines": {
+      "type": "string",
+      "description": "Preferred airlines"
+    },
+    "emergencyContact": {
+      "type": "string",
+      "description": "Emergency contact information"
+    },
+    "allergies": {
+      "type": "string",
+      "description": "Allergies and dietary restrictions"
+    }
+  },
+  "required": [
+    "i",
+    "employeeId",
+    "seatPreference",
+    "mealPreference"
+  ],
+  "additionalProperties": false,
+  "d": "Etk6EhuG09iXynnvGIxUZxYwugDCNC9G80ouiJ1apMlU"
+}

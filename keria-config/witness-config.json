@@ -1,0 +1,12 @@
+{
+  "dt": "2025-08-25T07:30:00+00:00",
+  "keria": {
+    "dt": "2025-08-25T07:30:00+00:00",
+    "curls": ["http://localhost:3905/"]
+  },
+  "iurls": [
+    "http://localhost:5642/oobi/BEocuJl6Hr6o6--j8p3pDEwbXzuwnX2svCxYTEaJ1V5r",
+    "http://localhost:5643/oobi/BEMMlqKc38PibCyNI2wWXMmeoO5_XU2cSDC1grvTf2yv",
+    "http://localhost:5644/oobi/BGacdEu7VyLG5ZX-4ht-Fb2gOaSRdEL3QgrWR6OX9GXV"
+  ]
+}
